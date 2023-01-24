@@ -1,13 +1,23 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;  
 
-app.get('/', function (req, res) {
-    res.send('Hello World!')
+app.get('/', (req, res) => {
+  res.send('<!DOCTYPE html><html lang="en"><h1>Hello World, is it November?</h1>')
 })
 
-console.log('in the node console')
+
+app.get('/show', (req, res) => {
+
+    // res.sendFile('index.html');
+
+    res.sendFile('index.html' , { root : __dirname});
+
+
+})
+
+console.log('in the node console');
 
 app.listen(PORT, () => {
-    console.log('Example node listening at 3000')
+  console.log(`Example app listening on port ${ PORT }`)
 })
